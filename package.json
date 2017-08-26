@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build.demo.prod": "ng build --aot --prod --progress false --base-href \"https://halben.github.io/asiansportsnetwork/\""
   },
   "private": true,
   "dependencies": {

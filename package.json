@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently --kill-others \"npm run _server:run\" \"ng serve --aot --progress=false\"",
+    "start": "concurrently --kill-others \"npm run clean && npm run _server:run\" \"ng serve --aot --progress=false\"",
     "build": "ng build --prod --aot --output-path=dist/client && npm run _server:build",
     "_server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon --delay 5 dist/server/bin/www.js\" ",
     "_server:build": "tsc -p ./server",
+    "clean": "rimraf dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -35,6 +36,7 @@
     "mongoose": "^4.10.8",
     "morgan": "^1.8.2",
     "popper.js": "^1.12.5",
+    "rimraf": "^2.6.1",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

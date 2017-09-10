@@ -5,6 +5,7 @@ import * as morgan from 'morgan';
 import * as path from 'path';
 import * as errorHandler from 'errorhandler';
 import * as mongoose from 'mongoose';
+import * as bluebird from 'bluebird';
 
 // api
 import { UserApi } from './api/user';
@@ -92,6 +93,10 @@ export class Server {
     this.app.use(bodyParser.urlencoded({
       extended: true
     }));
+
+    // use bluebird promises
+    global.Promise = bluebird;
+    (<any>mongoose).Promise = global.Promise;
 
     // connect to mongoose
     mongoose.connect('mongodb://localhost:27017/asn');
